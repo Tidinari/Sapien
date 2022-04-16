@@ -7,6 +7,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
+import ru.sapiens.sapien.data.Task
+import ru.sapiens.sapien.data.TasksDatabase
 import ru.sapiens.sapien.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,5 +31,16 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Не расскоментируй без объективной на то причины!
+        // roomSetup()
+    }
+
+    private fun roomSetup(): TasksDatabase {
+        return Room.databaseBuilder(
+            applicationContext,
+            TasksDatabase::class.java,
+            "sapien-tasks"
+        ).build()
     }
 }
