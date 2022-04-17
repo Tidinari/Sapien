@@ -1,4 +1,4 @@
-package ru.sapiens.sapien.data
+package ru.sapiens.sapien.data.tasks
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

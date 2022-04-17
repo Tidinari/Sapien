@@ -8,8 +8,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
-import ru.sapiens.sapien.data.Task
-import ru.sapiens.sapien.data.TasksDatabase
+import androidx.room.RoomDatabase
+import ru.sapiens.sapien.data.holidays.HolidaysDatabase
+import ru.sapiens.sapien.data.tasks.TasksDatabase
 import ru.sapiens.sapien.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,10 +37,16 @@ class MainActivity : AppCompatActivity() {
         // roomSetup()
     }
 
-    private fun roomSetup(): TasksDatabase {
-        return Room.databaseBuilder(
+    // SQLite Database Setup
+    private fun roomSetup() {
+        val tasks = Room.databaseBuilder(
             applicationContext,
             TasksDatabase::class.java,
+            "sapien-tasks"
+        ).build()
+        val holidays = Room.databaseBuilder(
+            applicationContext,
+            HolidaysDatabase::class.java,
             "sapien-tasks"
         ).build()
     }
